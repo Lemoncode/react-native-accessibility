@@ -1,5 +1,6 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Pressable } from "react-native";
+import { router } from "expo-router";
 import MaterialIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import * as vm from "./repo.vm";
 import { Stars } from "./components/stars.component";
@@ -15,7 +16,9 @@ export const Repo: React.FC<Props> = ({ data }) => {
     <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.headerInfo}>
-          <MaterialIcons style={styles.backIcon} name="chevron-left" />
+          <Pressable onPress={() => router.back()}>
+            <MaterialIcons style={styles.backIcon} name="chevron-left" />
+          </Pressable>
           <Text style={styles.title}>{data.name}</Text>
         </View>
         <View style={styles.headerInfo}>

@@ -19,7 +19,9 @@ export const Repo: React.FC<Props> = ({ data }) => {
           <Pressable onPress={() => router.back()}>
             <MaterialIcons style={styles.backIcon} name="chevron-left" />
           </Pressable>
-          <Text style={styles.title}>{data.name}</Text>
+          <Text style={styles.title} numberOfLines={1}>
+            {data.name}
+          </Text>
         </View>
         <View style={styles.headerInfo}>
           <Stars count={data.stars} />

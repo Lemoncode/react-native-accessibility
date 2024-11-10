@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, Pressable } from "react-native";
+import { View, Text, StyleSheet, Pressable, ScrollView } from "react-native";
 import { router } from "expo-router";
 import MaterialIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import * as vm from "./repo.vm";
@@ -26,19 +26,18 @@ export const Repo: React.FC<Props> = ({ data }) => {
           <Language lang={data.language} />
         </View>
       </View>
-      <View style={styles.content}>
-        <Text style={styles.text}>{data.description}</Text>
-        <Text style={styles.text}>Stars: {data.stars}</Text>
-        <Text style={styles.text}>Created at: {data.createdAt}</Text>
-        <Text style={styles.text}>Last push: {data.pushedAt}</Text>
-        <Text style={styles.text}>Topics: {data.topics.join(", ")}</Text>
-      </View>
-      <View style={styles.contributors}>
-        <ContributorsPod
-          organization={"lemoncode"}
-          repositoryName={data.name}
-        />
-      </View>
+      <ScrollView style={styles.content}>
+        <Text style={styles.description}>{data.description}</Text>
+        {data.topics?.length > 0 && (
+          <Text style={styles.topics}>Topics: {data.topics.join(", ")}</Text>
+        )}
+        <View style={styles.contributors}>
+          <ContributorsPod
+            organization={"lemoncode"}
+            repositoryName={data.name}
+          />
+        </View>
+      </ScrollView>
     </View>
   );
 };
@@ -77,8 +76,13 @@ const styles = StyleSheet.create({
   content: {
     padding: 10,
   },
-  text: {
+  description: {
+    fontSize: 16,
+    marginBottom: 15,
+  },
+  topics: {
     fontSize: 18,
+    marginBottom: 15,
   },
   contributors: {
     padding: 10,

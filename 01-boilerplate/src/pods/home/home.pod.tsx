@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, ActivityIndicator } from "react-native";
 import { Organization } from "./home.vm";
 import { getOrganization } from "./repository";
 import { Home } from "./home.component";
@@ -11,11 +11,13 @@ export const HomePod = () => {
     getOrganization("lemoncode").then(setOrg);
   }, []);
 
+  console.log({ org });
+
   return org ? (
     <Home org={org} />
   ) : (
     <View style={styles.container}>
-      <Text>Loading...</Text>
+      <ActivityIndicator size="large" />
     </View>
   );
 };

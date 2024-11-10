@@ -1,15 +1,15 @@
 import React from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
-import * as Linking from "expo-linking";
 import Fontawesome from "@expo/vector-icons/FontAwesome";
 import { Repo } from "../repos.vm";
 
 interface Props {
   repo: Repo;
+  onSelect: () => void;
 }
 
-export const Item: React.FC<Props> = ({ repo }) => (
-  <TouchableOpacity onPress={() => Linking.openURL(repo.htmlUrl)}>
+export const Item: React.FC<Props> = ({ repo, onSelect }) => (
+  <TouchableOpacity onPress={onSelect}>
     <View style={styles.container}>
       <View>
         <Image style={styles.avatar} source={{ uri: repo.owner.avatarUrl }} />

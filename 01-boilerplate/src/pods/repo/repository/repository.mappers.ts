@@ -1,5 +1,5 @@
 import type * as am from "./api/api.model";
-import type * as vm from "../repos.vm";
+import type * as vm from "../repo.vm";
 
 export const mapOrganizationRepoToVM = (organization: am.Repo): vm.Repo => ({
   id: organization.id,
@@ -11,8 +11,10 @@ export const mapOrganizationRepoToVM = (organization: am.Repo): vm.Repo => ({
   owner: {
     avatarUrl: organization.owner.avatar_url,
   },
+  collaboratorsUrl: organization.collaborators_url,
+  createdAt: organization.created_at,
+  pushedAt: organization.pushed_at,
+  stars: organization.stargazers_count,
+  language: organization.language,
+  topics: organization.topics,
 });
-
-export const mapOrganizationReposToVM = (
-  organizationRepos: am.Repo[]
-): vm.Repo[] => organizationRepos.map(mapOrganizationRepoToVM);

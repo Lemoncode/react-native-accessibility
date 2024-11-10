@@ -1,15 +1,16 @@
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { Tabs } from "expo-router";
 
 export default () => {
   return (
-    <Tabs screenOptions={{ tabBarActiveTintColor: "blue" }}>
+    <Tabs screenOptions={{ tabBarActiveTintColor: "#2196F3" }}>
       <Tabs.Screen
         name="index"
         options={{
           title: "Home",
           tabBarIcon: ({ color }) => (
-            <FontAwesome size={28} name="home" color={color} />
+            <MaterialCommunityIcons size={28} name="home" color={color} />
           ),
         }}
       />
@@ -18,7 +19,7 @@ export default () => {
         options={{
           title: "Repositories",
           tabBarIcon: ({ color }) => (
-            <FontAwesome size={28} name="code" color={color} />
+            <MaterialCommunityIcons size={28} name="code-tags" color={color} />
           ),
         }}
       />

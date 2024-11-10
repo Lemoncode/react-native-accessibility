@@ -4,32 +4,33 @@ import * as Linking from "expo-linking";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 
 import { Organization } from "./home.vm";
+import { InfoDialog } from "./components/info-dialog.component";
+import { IconButton } from "../../common/components";
 
 interface Props {
   org: Organization;
 }
 
 export const Home: React.FC<Props> = ({ org }) => {
+  const [open, setOpen] = React.useState(false);
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>{org.name.toUpperCase()}</Text>
-      <Image style={styles.avatar} source={{ uri: org.avatarUrl }} />
-      <Text style={styles.description}>{org.description}</Text>
-      <View style={styles.buttons}>
-        <FontAwesome.Button
-          name="envelope-o"
-          onPress={() => Linking.openURL(`mailto://${org.email}`)}
-        >
-          Contact us
-        </FontAwesome.Button>
-        <FontAwesome.Button
-          name="bookmark-o"
-          onPress={() => Linking.openURL(org.blog)}
-        >
-          Website
-        </FontAwesome.Button>
+    <>
+      <View style={styles.container}>
+        <Text style={styles.title}>{org.name.toUpperCase()}</Text>
+        <Image style={styles.avatar} source={{ uri: org.avatarUrl }} />
+
+        <View style={styles.row}>
+          <Text style={styles.description}>{org.description}</Text>
+          <IconButton
+            iconName="information-outline"
+            onPress={() => setOpen(true)}
+          />
+        </View>
       </View>
-    </View>
+
+      <InfoDialog org={org} open={open} onClose={() => setOpen(false)} />
+    </>
   );
 };
 
@@ -51,8 +52,10 @@ const styles = StyleSheet.create({
     width: 250,
     height: 250,
   },
-  buttons: {
+  row: {
     flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
     gap: 20,
   },
 });

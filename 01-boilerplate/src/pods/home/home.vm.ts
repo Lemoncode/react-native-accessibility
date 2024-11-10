@@ -11,4 +11,5 @@ export interface Organization {
   email: string;
   publicRepos: number;
   followers: number;
+  htmlUrl: string;
 }

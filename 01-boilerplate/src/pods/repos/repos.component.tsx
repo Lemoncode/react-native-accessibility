@@ -1,18 +1,10 @@
 import React from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  ScrollView,
-  FlatList,
-  TextInput,
-} from "react-native";
-import * as Linking from "expo-linking";
+import { View, StyleSheet, FlatList, TextInput } from "react-native";
+import { router } from "expo-router";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 
-import { Repo } from "./repos.vm";
 import { Item } from "./components/item.component";
+import { Repo } from "./repos.vm";
 
 interface Props {
   list: Repo[];
@@ -29,6 +21,10 @@ export const Repos: React.FC<Props> = ({ list }) => {
       )
     );
   }, [search, list]);
+
+  const handleSelect = (repo: Repo) => () => {
+    router.push(`/repos/${repo.name}`);
+  };
 
   return (
     <View style={styles.container}>
@@ -48,9 +44,10 @@ export const Repos: React.FC<Props> = ({ list }) => {
         </View>
       </View>
       <FlatList
-        style={styles.list}
         data={filteredRepos}
-        renderItem={({ item }) => <Item repo={item} />}
+        renderItem={({ item }) => (
+          <Item repo={item} onSelect={handleSelect(item)} />
+        )}
         keyExtractor={(item) => item.id.toString()}
       />
     </View>
@@ -81,5 +78,4 @@ const styles = StyleSheet.create({
     fontSize: 18,
     padding: 10,
   },
-  list: {},
 });

@@ -16,4 +16,5 @@ export const mapOrganizationFromApiToVm = (
   followers: organization.followers,
   membersUrl: organization.members_url,
   publicRepos: organization.public_repos,
+  htmlUrl: organization.html_url,
 });

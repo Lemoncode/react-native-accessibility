@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet, ActivityIndicator } from "react-native";
 import { Repo } from "./repos.vm";
 import { getOrganizationRepos } from "./repository";
 import { Repos } from "./repos.component";
@@ -15,7 +15,7 @@ export const ReposPod = () => {
     <Repos list={repos} />
   ) : (
     <View style={styles.container}>
-      <Text>Loading...</Text>
+      <ActivityIndicator size="large" />
     </View>
   );
 };

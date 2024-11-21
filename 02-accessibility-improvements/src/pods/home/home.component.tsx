@@ -20,11 +20,16 @@ export const Home: React.FC<Props> = ({ org }) => {
         <Text style={styles.title} accessibilityRole="header">
           {org.name.toUpperCase()}
         </Text>
-        <Image
-          style={styles.avatar}
-          source={{ uri: org.avatarUrl }}
+        <View
+        accessible={true}
+          accessibilityRole="image"
           accessibilityLabel={`${org.name.toUpperCase()} logo`}
-        />
+        >
+          <Image
+            style={styles.avatar}
+            source={{ uri: org.avatarUrl }}
+          />
+        </View>
 
         <View style={styles.row}>
           <A11y.Order>

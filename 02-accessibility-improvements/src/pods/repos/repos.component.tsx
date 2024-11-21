@@ -16,21 +16,17 @@ export const Repos: React.FC<Props> = ({ list }) => {
   const [filteredRepos, setFilteredRepos] = React.useState<Repo[]>([]);
 
   React.useEffect(() => {
-    setFilteredRepos(
-      list.filter((repo) =>
-        repo.name.toLowerCase().includes(search.toLowerCase())
-      )
+    const filteredList = list.filter((repo) =>
+      repo.name.toLowerCase().includes(search.toLowerCase())
     );
 
+    setFilteredRepos(filteredList);
     if (a11yAnnouncement.current) {
-      console.log("Limpiando1");
       clearTimeout(a11yAnnouncement.current);
     }
 
-    console.log("Ajusto el current.");
     a11yAnnouncement.current = setTimeout(() => {
-      console.log("¡Ejecuto!");
-      A11YInfo.announceForAccessibility(`Found ${filteredRepos.length} repos`);
+      A11YInfo.announceForAccessibility(`Found ${filteredList.length} repos`);
       a11yAnnouncement.current = null;
     }, 500);
   }, [search, list]);

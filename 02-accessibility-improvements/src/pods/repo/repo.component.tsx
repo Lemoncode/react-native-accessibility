@@ -26,7 +26,7 @@ export const Repo: React.FC<Props> = ({ data }) => {
         </View>
       </View>
       <ScrollView style={styles.content}>
-        <Text style={styles.description}>{data.description}</Text>
+        <Text style={styles.description} accessibilityLabel={`Description: ${data.description}`}>{data.description}</Text>
         {data.topics?.length > 0 && (
           <Text style={styles.topics}>Topics: {data.topics.join(", ")}</Text>
         )}

@@ -23,12 +23,12 @@ export const Contributors: React.FC<Props> = ({ list }) => {
         <View style={styles.container}>
           {list.map((item) => (
             <View
+              key={item.id}
               accessibilityLabel={item.login}
               accessible={true}
               accessibilityRole="image"
             >
               <Image
-                key={item.id}
                 style={styles.avatar}
                 source={{ uri: item.avatarUrl }}
               />

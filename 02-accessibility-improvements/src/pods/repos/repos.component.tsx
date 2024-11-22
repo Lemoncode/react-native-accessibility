@@ -12,23 +12,20 @@ interface Props {
 
 export const Repos: React.FC<Props> = ({ list }) => {
   const [search, setSearch] = React.useState("");
-  const a11yAnnouncement = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [filteredRepos, setFilteredRepos] = React.useState<Repo[]>([]);
+  React.useEffect(() => {
+    const timeOutId = setTimeout(() => {
+      A11YInfo.announceForAccessibility(`Found ${filteredRepos.length} repos`);
+    }, 500);
+    return () => clearTimeout(timeOutId);
+  }, [filteredRepos]);
 
   React.useEffect(() => {
-    const filteredList = list.filter((repo) =>
-      repo.name.toLowerCase().includes(search.toLowerCase())
+    setFilteredRepos(
+      list.filter((repo) =>
+        repo.name.toLowerCase().includes(search.toLowerCase())
+      )
     );
-
-    setFilteredRepos(filteredList);
-    if (a11yAnnouncement.current) {
-      clearTimeout(a11yAnnouncement.current);
-    }
-
-    a11yAnnouncement.current = setTimeout(() => {
-      A11YInfo.announceForAccessibility(`Found ${filteredList.length} repos`);
-      a11yAnnouncement.current = null;
-    }, 500);
   }, [search, list]);
 
   const handleSelect = (repo: Repo) => () => {

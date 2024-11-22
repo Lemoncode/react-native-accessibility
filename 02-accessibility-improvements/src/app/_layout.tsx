@@ -10,7 +10,8 @@ export default () => {
           headerShown: true,
           headerBackVisible: true,
           title: "Repository info",
-          headerBackTitle: "Repositories"
+          headerBackTitle: "Repositories",
+          headerBackButtonDisplayMode: "minimal",
         }}
       />
     </Stack>

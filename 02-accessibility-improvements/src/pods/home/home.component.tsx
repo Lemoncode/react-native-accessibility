@@ -31,8 +31,8 @@ export const Home: React.FC<Props> = ({ org }) => {
           />
         </View>
 
+        <A11y.Order>
         <View style={styles.row}>
-          <A11y.Order>
             <A11y.Index index={1}>
               <Text style={styles.description}>{org.description}</Text>
             </A11y.Index>
@@ -43,8 +43,9 @@ export const Home: React.FC<Props> = ({ org }) => {
                 accessibilityLabel={`More info about ${org.name.toUpperCase()}`}
               />
             </A11y.Index>
-          </A11y.Order>
         </View>
+        </A11y.Order>
+
       </View>
 
       <InfoDialog org={org} open={open} onClose={() => setOpen(false)} />

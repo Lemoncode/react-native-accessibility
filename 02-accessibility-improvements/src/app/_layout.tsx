@@ -5,7 +5,7 @@ export default () => {
     <Stack>
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       <Stack.Screen
-        name="repos/[name]"
+        name="repositories/[name]"
         options={{
           headerShown: true,
           headerBackVisible: false,

@@ -23,11 +23,13 @@ export const InfoDialog: React.FC<Props> = ({ org, open, onClose }) => {
         <View style={styles.modal}>
           <View style={styles.header}>
             <View />
-            <Text style={styles.title}>More info</Text>
+            <Text style={styles.title} accessibilityRole="header">More info</Text>
             <MaterialIcon
               style={styles.closeIcon}
               name="close"
               onPress={onClose}
+              accessibilityRole="button"
+              accessibilityLabel="Close"
             />
           </View>
           <View style={styles.content}>
@@ -39,14 +41,17 @@ export const InfoDialog: React.FC<Props> = ({ org, open, onClose }) => {
             <IconButton
               iconName="email-outline"
               onPress={() => Linking.openURL(`mailto://${org.email}`)}
+              accessibilityLabel="Send an email"
             />
             <IconButton
               iconName="web"
               onPress={() => Linking.openURL(org.blog)}
+              accessibilityLabel="Visit website"
             />
             <IconButton
               iconName="code-tags"
               onPress={() => Linking.openURL(org.htmlUrl)}
+              accessibilityLabel="Visit GitHub"
             />
           </View>
         </View>

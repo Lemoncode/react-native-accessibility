@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Image } from "react-native";
 import { IconButton } from "../../common/components";
 import { InfoDialog } from "./components/info-dialog.component";
 import * as vm from "./organization.vm";
+import { A11y } from "react-native-a11y-order";
 
 interface Props {
   org: vm.Organization;
@@ -14,16 +15,30 @@ export const Organization: React.FC<Props> = ({ org }) => {
   return (
     <>
       <View style={styles.container}>
-        <Text style={styles.title}>{org.name.toUpperCase()}</Text>
-        <Image style={styles.avatar} source={{ uri: org.avatarUrl }} />
-
-        <View style={styles.row}>
-          <Text style={styles.description}>{org.description}</Text>
-          <IconButton
-            iconName="information-outline"
-            onPress={() => setOpen(true)}
-          />
+        <Text style={styles.title} accessibilityRole="header">
+          {org.name.toUpperCase()}
+        </Text>
+        <View
+          accessibilityLabel={`${org.name} logo`}
+          accessible={true}
+          accessibilityRole="image"
+        >
+          <Image style={styles.avatar} source={{ uri: org.avatarUrl }} />
         </View>
+        <A11y.Order>
+          <View style={styles.row}>
+            <A11y.Index index={1}>
+              <Text style={styles.description}>{org.description}</Text>
+            </A11y.Index>
+            <A11y.Index index={2}>
+              <IconButton
+                iconName="information-outline"
+                onPress={() => setOpen(true)}
+                accessibilityLabel={`More information about ${org.name}`}
+              />
+            </A11y.Index>
+          </View>
+        </A11y.Order>
       </View>
 
       <InfoDialog org={org} open={open} onClose={() => setOpen(false)} />

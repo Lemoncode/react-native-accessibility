@@ -5,6 +5,7 @@ import FontAwesome from "@expo/vector-icons/FontAwesome";
 
 import { Item } from "./components";
 import { OrganizationRepository } from "./repository-list.vm";
+import { AccessibilityInfo as A11yInfo} from 'react-native';
 
 interface Props {
   list: OrganizationRepository[];
@@ -15,6 +16,12 @@ export const RepositoryList: React.FC<Props> = ({ list }) => {
   const [filteredRepos, setFilteredRepos] = React.useState<
     OrganizationRepository[]
   >([]);
+React.useEffect(() => {
+  const timeout = setTimeout(() => {
+    A11yInfo.announceForAccessibility(`${filteredRepos.length} repos found.`);
+  }, 500);
+return () => clearTimeout(timeout);
+  }, [ filteredRepos ]);
 
   React.useEffect(() => {
     setFilteredRepos(
@@ -33,12 +40,14 @@ export const RepositoryList: React.FC<Props> = ({ list }) => {
       <View style={styles.header}>
         <View style={styles.searchBar}>
           <FontAwesome
+          accessibilityElementsHidden={true}
             style={styles.icon}
             name="search"
             size={20}
             color="#fff"
           />
           <TextInput
+            accessibilityLabel="Search:"
             style={styles.input}
             value={search}
             onChangeText={setSearch}

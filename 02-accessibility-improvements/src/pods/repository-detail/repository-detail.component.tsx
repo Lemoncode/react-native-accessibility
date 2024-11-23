@@ -15,10 +15,10 @@ export const RepositoryDetail: React.FC<Props> = ({ data }) => {
     <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.headerInfo}>
-          <Pressable onPress={() => router.back()}>
+          <Pressable onPress={() => router.back()} accessibilityLabel="Repositories, back button">
             <MaterialIcons style={styles.backIcon} name="chevron-left" />
           </Pressable>
-          <Text style={styles.title} numberOfLines={1}>
+          <Text style={styles.title} numberOfLines={1} accessibilityRole="header">
             {data.name}
           </Text>
         </View>

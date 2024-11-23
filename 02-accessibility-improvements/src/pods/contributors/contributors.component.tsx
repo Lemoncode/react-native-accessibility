@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  View,
-  StyleSheet,
-  FlatList,
-  Image,
-  Text,
-  ScrollView,
-} from "react-native";
+import { View, StyleSheet, Image, Text, ScrollView } from "react-native";
 import { Contributor } from "./contributors.vm";
 
 interface Props {
@@ -16,23 +9,15 @@ interface Props {
 export const Contributors: React.FC<Props> = ({ list }) => {
   return (
     <>
-      <Text style={styles.title} accessibilityRole="header">
-        Contributors:
-      </Text>
+      <Text style={styles.title}>Contributors:</Text>
       <ScrollView>
         <View style={styles.container}>
           {list.map((item) => (
-            <View
+            <Image
               key={item.id}
-              accessibilityLabel={item.login}
-              accessible={true}
-              accessibilityRole="image"
-            >
-              <Image
-                style={styles.avatar}
-                source={{ uri: item.avatarUrl }}
-              />
-            </View>
+              style={styles.avatar}
+              source={{ uri: item.avatarUrl }}
+            />
           ))}
         </View>
       </ScrollView>

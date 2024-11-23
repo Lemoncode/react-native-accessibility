@@ -8,10 +8,8 @@ export default () => {
         name="repos/[name]"
         options={{
           headerShown: true,
-          headerBackVisible: true,
+          headerBackVisible: false,
           title: "Repository info",
-          headerBackTitle: "Repositories",
-          headerBackButtonDisplayMode: "minimal",
         }}
       />
     </Stack>

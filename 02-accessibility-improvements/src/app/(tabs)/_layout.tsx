@@ -1,6 +1,6 @@
+import FontAwesome from "@expo/vector-icons/FontAwesome";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { Tabs } from "expo-router";
-import { PlatformPressable } from "@react-navigation/elements";
 
 export default () => {
   return (
@@ -12,10 +12,6 @@ export default () => {
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons size={28} name="home" color={color} />
           ),
-          tabBarAccessibilityLabel: "Home, Tab, 1 of 2",
-          tabBarButton: (props) => (
-            <PlatformPressable {...props} accessibilityRole="tab" role="tab" />
-          ),
         }}
       />
       <Tabs.Screen
@@ -24,10 +20,6 @@ export default () => {
           title: "Repositories",
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons size={28} name="code-tags" color={color} />
-          ),
-          tabBarAccessibilityLabel: "Repositories, Tab, 2 of 2",
-          tabBarButton: (props) => (
-            <PlatformPressable {...props} accessibilityRole="tab" role="tab" />
           ),
         }}
       />

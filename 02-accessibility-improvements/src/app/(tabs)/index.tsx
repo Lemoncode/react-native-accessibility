@@ -1,3 +1,3 @@
-import { HomePod } from "../../pods/home/home.pod";
+import { OrganizationPod } from "../../pods/organization/organization.pod";
 
-export default HomePod;
+export default OrganizationPod;

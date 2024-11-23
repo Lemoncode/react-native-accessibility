@@ -1,8 +1,9 @@
 import React from "react";
 import { View, StyleSheet, ActivityIndicator } from "react-native";
-import { Contributor } from "./contributors.vm";
-import { getRepoContributors } from "./repository";
+import * as api from "./api";
 import { Contributors } from "./contributors.component";
+import { mapContributorsToVM } from "./contributors.mappers";
+import type { Contributor } from "./contributors.vm";
 
 interface Props {
   organization: string;
@@ -14,10 +15,11 @@ export const ContributorsPod: React.FC<Props> = (props) => {
   const [contributors, setContributors] = React.useState<Contributor[]>();
 
   React.useEffect(() => {
-    getRepoContributors(organization, repositoryName).then(setContributors);
+    api
+      .getRepoContributors(organization, repositoryName)
+      .then(mapContributorsToVM)
+      .then(setContributors);
   }, [organization, repositoryName]);
-
-  console.log({ contributors });
 
   return contributors ? (
     <Contributors list={contributors} />

@@ -1,3 +1,3 @@
-import { ReposPod } from "../../pods/repos/repos.pod";
+import { RepositoryListPod } from "../../pods/repository-list/repository-list.pod";
 
-export default ReposPod;
+export default RepositoryListPod;

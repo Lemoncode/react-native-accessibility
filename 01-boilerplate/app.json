@@ -1,9 +1,9 @@
 {
   "expo": {
-    "newArchEnabled": true, 
-    "name": "accesibility-playground",
-    "slug": "accesibility-playground",
-    "scheme": "accesibility-playground-scheme",
+    "newArchEnabled": true,
+    "name": "accessibility-playground",
+    "slug": "accessibility-playground",
+    "scheme": "accessibility-playground-scheme",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

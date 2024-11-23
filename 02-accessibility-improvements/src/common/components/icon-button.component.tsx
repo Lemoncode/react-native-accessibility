@@ -5,14 +5,13 @@ import MaterialIcon from "@expo/vector-icons/MaterialCommunityIcons";
 interface Props {
   iconName: keyof typeof MaterialIcon.glyphMap;
   onPress: () => void;
-  accessibilityLabel?: string;
 }
 
 export const IconButton: React.FC<Props> = (props) => {
-  const { iconName, onPress, accessibilityLabel } = props;
+  const { iconName, onPress } = props;
 
   return (
-    <Pressable accessibilityRole="button" accessibilityLabel={accessibilityLabel}>
+    <Pressable>
       <View style={styles.button}>
         <MaterialIcon style={styles.icon} name={iconName} onPress={onPress} />
       </View>

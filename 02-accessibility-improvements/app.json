@@ -1,9 +1,9 @@
 {
   "expo": {
-    "newArchEnabled": true,
-    "name": "accesibility-playground",
-    "slug": "accesibility-playground",
-    "scheme": "accesibility-playground-scheme",
+    "newArchEnabled": true, 
+    "name": "accessibility-playground",
+    "slug": "accessibility-playground",
+    "scheme": "accessibility-playground-scheme",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -14,8 +14,7 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.kastwey.accesibilityplayground"
+      "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
@@ -26,16 +25,6 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "plugins": [
-      "expo-router"
-    ],
-    "extra": {
-      "router": {
-        "origin": false
-      },
-      "eas": {
-        "projectId": "5f1d1d88-bcc9-4627-a34a-0cda6838e4bc"
-      }
-    }
+    "plugins": ["expo-router"]
   }
 }

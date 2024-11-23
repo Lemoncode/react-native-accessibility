@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  View,
-  StyleSheet,
-  FlatList,
-  Image,
-  Text,
-  ScrollView,
-} from "react-native";
+import { View, StyleSheet, Image, Text, ScrollView } from "react-native";
 import { Contributor } from "./contributors.vm";
 
 interface Props {

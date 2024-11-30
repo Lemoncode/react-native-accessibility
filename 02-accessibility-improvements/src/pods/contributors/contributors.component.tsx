@@ -9,15 +9,20 @@ interface Props {
 export const Contributors: React.FC<Props> = ({ list }) => {
   return (
     <>
-      <Text style={styles.title}>Contributors:</Text>
+      <Text style={styles.title} accessibilityRole="header">
+        Contributors:
+      </Text>
       <ScrollView>
         <View style={styles.container}>
           {list.map((item) => (
-            <Image
+            <View
+              accessibilityRole="image"
+              accessibilityLabel={item.login}
+              accessible={true}
               key={item.id}
-              style={styles.avatar}
-              source={{ uri: item.avatarUrl }}
-            />
+            >
+              <Image style={styles.avatar} source={{ uri: item.avatarUrl }} />
+            </View>
           ))}
         </View>
       </ScrollView>

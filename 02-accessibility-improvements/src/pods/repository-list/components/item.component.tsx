@@ -9,7 +9,7 @@ interface Props {
 }
 
 export const Item: React.FC<Props> = ({ repo, onSelect }) => (
-  <TouchableOpacity onPress={onSelect}>
+  <TouchableOpacity onPress={onSelect} accessibilityRole="button">
     <View style={styles.container}>
       <View>
         <Image style={styles.avatar} source={{ uri: repo.owner.avatarUrl }} />

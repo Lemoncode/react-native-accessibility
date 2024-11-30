@@ -10,11 +10,13 @@ export const Language: React.FC<Props> = ({ lang }) => {
   return (
     lang && (
       <View style={styles.container}>
-        <MaterialIcons
+      <MaterialIcons
           style={styles.starIcon}
           name={
             `language-${lang.toLowerCase()}` as keyof typeof MaterialIcons.glyphMap
           }
+          accessibilityLabel={`Main language: ${lang}`}
+          accessibilityRole="text"
         />
       </View>
     )

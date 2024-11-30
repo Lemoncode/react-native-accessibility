@@ -9,8 +9,8 @@ interface Props {
 export const Stars: React.FC<Props> = ({ count }) => {
   return (
     <View style={styles.container}>
-      <MaterialIcons style={styles.starIcon} name="star" />
-      <Text style={styles.text}>{count}</Text>
+      <MaterialIcons style={styles.starIcon} name="star" accessibilityLabel={`${count} stars`} />
+      <Text style={styles.text} accessibilityElementsHidden={true}>{count}</Text>
     </View>
   );
 };
